@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="youtube_video_stage_queue" model="project.task.type">
+            <field name="name">Queue</field>
+            <field name="sequence">10</field>
+            <field name="is_youtube_default" eval="True" />
+        </record>
+        <record id="youtube_video_stage_scripting" model="project.task.type">
+            <field name="name">Scripting</field>
+            <field name="sequence">20</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="
+                [
+                    (5, 0, 0),
+                    (0, 0, {'name': 'Write a detailed plan'}),
+                    (0, 0, {'name': 'Write the script'}),
+                    (0, 0, {'name': 'Write a storyboard'}),
+                    (0, 0, {'name': 'Prepare a blog post'}),
+                ]
+            " />
+        </record>
+        <record id="youtube_video_stage_recording" model="project.task.type">
+            <field name="name">Recording</field>
+            <field name="sequence">30</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="
+                [
+                    (5, 0, 0),
+                    (0, 0, {'name': 'Capture Odoo screens'}),
+                    (0, 0, {'name': 'Transform text to voice'}),
+                ]
+            " />
+        </record>
+        <record id="youtube_video_stage_editing" model="project.task.type">
+            <field name="name">Editing</field>
+            <field name="sequence">40</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="
+                [
+                    (5, 0, 0),
+                    (0, 0, {'name': 'Search for videos/images/SFX'}),
+                    (0, 0, {'name': 'Create a thumbnail'}),
+                    (0, 0, {'name': 'Create schemas and diagrams'}),
+                    (0, 0, {'name': 'Edit the video'}),
+                ]
+            " />
+        </record>
+        <record id="youtube_video_stage_seo" model="project.task.type">
+            <field name="name">SEO / Teasing</field>
+            <field name="sequence">50</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="
+                [
+                    (5, 0, 0),
+                    (0, 0, {'name': 'Edit title/description/tags'}),
+                    (0, 0, {'name': 'Translate a'}),
+                    (0, 0, {'name': 'Add chapters'}),
+                    (0, 0, {'name': 'Add cards and end-screen'}),
+                    (0, 0, {'name': 'Create a teaser post on social medias'}),
+                ]
+            " />
+        </record>
+        <record id="youtube_video_stage_uploading" model="project.task.type">
+            <field name="name">Uploading</field>
+            <field name="sequence">60</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="
+                [
+                    (5, 0, 0),
+                    (0, 0, {'name': 'Export and upload the video'}),
+                    (0, 0, {'name': 'Edit and translate title/description'}),
+                    (0, 0, {'name': 'Publish the blog post'}),
+                ]
+            " />
+        </record>
+        <record id="youtube_video_stage_promoting" model="project.task.type">
+            <field name="name">Promoting</field>
+            <field name="sequence">70</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="
+                [
+                    (5, 0, 0),
+                    (0, 0, {'name': 'Create a post on social media for the release'}),
+                    (0, 0, {'name': 'Edit subtitles and post on social media'}),
+                ]
+            " />
+        </record>
+        <record id="youtube_video_stage_done" model="project.task.type">
+            <field name="name">Done</field>
+            <field name="sequence">100</field>
+            <field name="is_youtube_default" eval="True" />
+            <field name="auto_subtask_ids" eval="[]" />
+        </record>
+
+    </data>
+</odoo>

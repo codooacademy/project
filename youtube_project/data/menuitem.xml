@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     <!-- Top menu item -->
+        <menuitem name="Youtube Projects" id="menu_main_yt_project" groups="project.group_project_user" web_icon="youtube_project,static/description/icon.svg" sequence="70">
+            <menuitem id="menu_yt_project_project" name="Playlists" sequence="10" action="youtube_project_action" />
+            <menuitem id="menu_yt_task_type" name="Video Stages" sequence="40" action="open_youtube_task_type_action" />
+            <menuitem id="menu_yt_project_config" name="Configuration" sequence="100" groups="project.group_project_manager"/>
+        </menuitem>
+
+
+
+</odoo>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="edit_youtube_project" model="ir.ui.view">
+            <field name="name">edit_youtube_project</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='label_tasks']" position="before">
+                    <field name="is_youtube_project" invisible="1" />
+                    <field name="youtube_account_id" attrs="{'required': [('is_youtube_project', '=', True)]}" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_youtube_project_kanban" model="ir.ui.view">
+            <field name="name">view_youtube_project_kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban" />
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                <xpath expr="//kanban" position="attributes">
+                    <attribute name="records_draggable">0</attribute>
+                    <attribute name="action">action_view_videos</attribute>
+                </xpath>
+                <xpath expr="//a[hasclass('o_project_kanban_box')]" position="attributes">
+                    <attribute name="name">action_view_videos</attribute>
+                </xpath>
+            </field>
+        </record>
+<!--        project.view_task_kanban-->
+
+        <record id="youtube_project_action" model="ir.actions.act_window">
+            <field name="name">Playlists</field>
+            <field name="res_model">project.project</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="domain">[('is_youtube_project', '=', True)]</field>
+            <field name="context">{'default_is_youtube_project': True}</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('youtube_project.view_youtube_project_kanban')}),
+                (0, 0, {'view_mode': 'tree'}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('youtube_project.edit_youtube_project')})]"
+            />
+        </record>
+
+    </data>
+</odoo>
