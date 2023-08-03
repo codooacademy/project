@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_task_form_add_timer_buttons" model="ir.ui.view">
+            <field name="name">view_task_form2_inherited</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='child_ids']/tree/field[@name='effective_hours']" position="after">
+                    <field name="display_timesheet_timer" invisible="1"/>
+                    <field name="encode_uom_in_days" invisible="1"/>
+                    <field name="timer_pause" invisible="1"/>
+                    <field name="display_timer_start_primary" invisible="1"/>
+                    <field name="display_timer_start_secondary" invisible="1"/>
+                    <field name="display_timer_stop" invisible="1"/>
+                    <field name="display_timer_pause" invisible="1"/>
+                    <field name="display_timer_resume" invisible="1"/>
+
+                    <button class="btn-secondary" name="action_timer_start" type="object" title="Start timer" attrs="{'invisible': ['|', ('encode_uom_in_days', '=', True), '&amp;', ('display_timer_start_primary', '=', False), ('display_timer_start_secondary', '=', False), ]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-play"/>
+                    <button class="btn-secondary" name="action_timer_stop" type="object" title="Stop timer" attrs="{'invisible': ['|', ('display_timer_stop', '=', False), ('encode_uom_in_days', '=', True)]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-stop"/>
+                    <button class="btn-secondary" name="action_timer_pause" type="object" title="Pause timer" attrs="{'invisible': ['|', ('display_timer_pause', '=', False), ('encode_uom_in_days', '=', True)]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-pause"/>
+                    <button class="btn-secondary" name="action_timer_resume" type="object" title="Resume timer" attrs="{'invisible': ['|', ('display_timer_resume', '=', False), ('encode_uom_in_days', '=', True)]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-play"/>
+
+                    <field name="timer_start" widget="timer_start_field" class="text-secondary me-auto ms-2 ms-sm-0" string=" " />
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
