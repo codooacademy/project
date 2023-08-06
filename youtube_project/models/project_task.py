@@ -1,14 +1,23 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+from markupsafe import Markup
 import logging
 _logger = logging.getLogger(__name__)
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
+    date_deadline = fields.Datetime()
+    name = fields.Char(translate=True)
+    description = fields.Html(translate=True)
+
+
     is_youtube_task = fields.Boolean(related="project_id.is_youtube_project")
     is_ready_next_stage = fields.Boolean(compute="_compute_is_ready_next_stage")
     next_stage_id = fields.Many2one('project.task.type', compute="_compute_next_stage_id")
+    active_language_id = fields.Many2one('res.lang', default=lambda self: self.env['res.lang'].search([('code', '=', self.env.user.lang)], limit=1))
+    translated_name = fields.Char(compute="_compute_translated_name")
+    full_description = fields.Html(compute="_compute_full_description", translate=True)
 
     # kanban_state > Change to done when all subtasks are done
 
@@ -35,6 +44,22 @@ class ProjectTask(models.Model):
                                 ], limit=1)
 
 
+    @api.depends('name', 'active_language_id')
+    def _compute_translated_name(self):
+        for task in self:
+            translated_task = task.with_context(lang=task.active_language_id.code)
+            task.translated_name = translated_task.name
+
+    @api.depends('active_language_id', 'description', 'project_id.description', 'project_id.youtube_account_id.default_description')
+    def _compute_full_description(self):
+        for task in self:
+            translated_task = task.with_context(lang=task.active_language_id.code)
+            task.full_description = "%s %s %s %s" % (
+                    translated_task.description,
+                    Markup("<br />---<br />"),
+                    translated_task.project_id.description or Markup(""),
+                    translated_task.project_id.youtube_account_id.default_description or Markup(""),
+            )
 
     # --------------------------------------------
     #                   ORM

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="social_account_view_form" model="ir.ui.view">
+            <field name="name">social_account_view_form</field>
+            <field name="model">social.account</field>
+            <field name="inherit_id" ref="social.social_account_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='social_account_global']/.." position="after">
+                    <group>
+                        <group string="Default description">
+                            <field name="default_description" nolabel="1" colspan="2" />
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

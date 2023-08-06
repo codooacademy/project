@@ -54,12 +54,23 @@
 
 
 <!--                Infos Youtube tab  -->
-                <xpath expr="//notebook/page[1]" position="before">
-                    <page string="Infos Youtube">
-                        <group>
-                            <field name="displayed_image_id" string="Thumbnail" widget="attachment_image" />
+                <xpath expr="//notebook/page[@name='description_page']/field[@name='description']" position="replace" />
+                <xpath expr="//notebook/page[@name='description_page']" position="inside">
+                    <group>
+                        <group string="Description">
+<!--                            <xpath expr="//notebook/page[@name='description_page']/field[@name='description']" position="move" />-->
+                            <field name="description" placeholder="Video description..." nolabel="1" colspan="2" />
                         </group>
-                    </page>
+                        <group string="Translated infos">
+                            <field name="active_language_id" />
+                            <separator />
+                            <h2 colspan="2"><field name="translated_name" nolabel="1" colspan="2" /></h2>
+                            <field name="full_description" nolabel="1" colspan="2" />
+                        </group>
+                    </group>
+                </xpath>
+                <xpath expr="//notebook/page[@name='description_page']" position="attributes">
+                    <attribute name="string">Infos Youtube</attribute>
                 </xpath>
 
             </field>

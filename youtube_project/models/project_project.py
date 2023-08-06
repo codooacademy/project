@@ -7,6 +7,8 @@ _logger = logging.getLogger(__name__)
 class ProjectProject(models.Model):
     _inherit = "project.project"
 
+    description = fields.Html(translate=True)
+
     is_youtube_project = fields.Boolean()
     youtube_account_id = fields.Many2one('social.account', domain="[('media_type', '=', 'youtube')]")
 

@@ -28,6 +28,7 @@
         'views/project_project.xml',
         'views/project_task.xml',
         'views/project_task_type.xml',
+        'views/social_account.xml',
 
         # Menu Items
         'data/menuitem.xml',
