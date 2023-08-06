@@ -62,7 +62,7 @@
                             <field name="description" placeholder="Video description..." nolabel="1" colspan="2" />
                         </group>
                         <group string="Translated infos">
-                            <field name="active_language_id" />
+                            <field name="active_language_id" string="Language" />
                             <separator />
                             <h2 colspan="2"><field name="translated_name" nolabel="1" colspan="2" /></h2>
                             <field name="full_description" nolabel="1" colspan="2" />

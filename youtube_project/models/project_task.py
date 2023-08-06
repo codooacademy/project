@@ -72,16 +72,15 @@ class ProjectTask(models.Model):
             self.create_auto_subtasks()
         return res
 
-    @api.model
-    def create(self, vals):
-        if vals.get('project_id'):
-            project = self.env['project.project'].browse(vals['project_id'])
-            vals['tag_ids'] = [(4, tag.id) for tag in project.tag_ids]
-            vals['user_ids'] = [(4, project.user_id.id)]
-        print("=====================================================")
-        print(vals)
-        print("=====================================================")
-        res = super(ProjectTask, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('project_id'):
+                project = self.env['project.project'].browse(vals['project_id'])
+                vals['tag_ids'] = [(4, tag.id) for tag in project.tag_ids]
+                vals['user_ids'] = [(4, project.user_id.id)]
+
+        res = super(ProjectTask, self).create(vals_list)
         res.create_auto_subtasks()
         return res
 
