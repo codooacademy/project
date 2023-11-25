@@ -32,7 +32,7 @@ class ProjectProject(models.Model):
     def action_view_videos(self):
         """ Copy cat of action_view_tasks() """
         self.ensure_one()
-        action = self.env['ir.actions.act_window'].with_context({'active_id': self.id})._for_xml_id('youtube_project.action_see_videos')
+        action = self.env['ir.actions.act_window'].with_context({'active_id': self.id})._for_xml_id('project_youtube.action_see_videos')
         action['display_name'] = _("%(name)s", name=self.name)
         context = action['context'].replace('active_id', str(self.id))
         context = ast.literal_eval(context)

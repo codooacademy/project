@@ -40,9 +40,9 @@
             <field name="context">{'default_is_youtube_project': True}</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="view_ids" eval="[(5, 0, 0),
-                (0, 0, {'view_mode': 'kanban', 'view_id': ref('youtube_project.view_youtube_project_kanban')}),
+                (0, 0, {'view_mode': 'kanban', 'view_id': ref('project_youtube.view_youtube_project_kanban')}),
                 (0, 0, {'view_mode': 'tree'}),
-                (0, 0, {'view_mode': 'form', 'view_id': ref('youtube_project.edit_youtube_project')})]"
+                (0, 0, {'view_mode': 'form', 'view_id': ref('project_youtube.edit_youtube_project')})]"
             />
         </record>
 
