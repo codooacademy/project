@@ -18,10 +18,10 @@
                     <field name="display_timer_pause" invisible="1"/>
                     <field name="display_timer_resume" invisible="1"/>
 
-                    <button class="btn-secondary" name="action_timer_start" type="object" title="Start timer" attrs="{'invisible': ['|', ('encode_uom_in_days', '=', True), '&amp;', ('display_timer_start_primary', '=', False), ('display_timer_start_secondary', '=', False), ]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-play"/>
-                    <button class="btn-secondary" name="action_timer_stop" type="object" title="Stop timer" attrs="{'invisible': ['|', ('display_timer_stop', '=', False), ('encode_uom_in_days', '=', True)]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-stop"/>
-                    <button class="btn-secondary" name="action_timer_pause" type="object" title="Pause timer" attrs="{'invisible': ['|', ('display_timer_pause', '=', False), ('encode_uom_in_days', '=', True)]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-pause"/>
-                    <button class="btn-secondary" name="action_timer_resume" type="object" title="Resume timer" attrs="{'invisible': ['|', ('display_timer_resume', '=', False), ('encode_uom_in_days', '=', True)]}" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-play"/>
+                    <button class="btn-secondary" name="action_timer_start" type="object" title="Start timer" invisible="encode_uom_in_days or (not display_timer_start_primary and not display_timer_start_secondary)" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-play"/>
+                    <button class="btn-secondary" name="action_timer_stop" type="object" title="Stop timer" invisible="encode_uom_in_days or not display_timer_stop" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-stop"/>
+                    <button class="btn-secondary" name="action_timer_pause" type="object" title="Pause timer" invisible="encode_uom_in_days or not display_timer_pause" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-pause"/>
+                    <button class="btn-secondary" name="action_timer_resume" type="object" title="Resume timer" invisible="encode_uom_in_days or not display_timer_resume" groups="hr_timesheet.group_hr_timesheet_user" icon="fa-play"/>
 
                     <field name="timer_start" widget="timer_start_field" class="text-secondary me-auto ms-2 ms-sm-0" string=" " />
                 </xpath>

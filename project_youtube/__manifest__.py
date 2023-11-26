@@ -1,18 +1,16 @@
-# -*- coding: utf-8 -*-
-
 {
     'name': "Youtube Project",
     'category': "Social",
-    'version': "16.0.0.0.1",
+    'version': "17.0.0.0.1",
     'installable': True,
     'application': True,
     'sequence': 1,
 
-    'license': "OEEL-1",
-    'author': "MrFaBemol",
+    'license': "LGPL-3",
+    'author': "Gautier «MrFaBemol» Casabona",
     'website': "https://www.codoo.academy",
 
-    'depends': ['project', 'social_youtube', 'timesheet_subtask'],
+    'depends': ['project', 'social_youtube'],
     "assets": {
         "web.assets_backend": [],
     },
