@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="criteria_type_standard" model="project.user.story.criteria.type">
+            <field name="name">Standard</field>
+        </record>
+        <record id="criteria_type_config" model="project.user.story.criteria.type">
+            <field name="name">Configuration</field>
+        </record>
+        <record id="criteria_type_custom_func" model="project.user.story.criteria.type">
+            <field name="name">Customization (functional)</field>
+        </record>
+        <record id="criteria_type_custom_tech" model="project.user.story.criteria.type">
+            <field name="name">Customization (technical)</field>
+        </record>
+        <record id="criteria_type_custom_tech_external" model="project.user.story.criteria.type">
+            <field name="name">Customization (external)</field>
+        </record>
+
+    </data>
+</odoo>

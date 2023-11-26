@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="project_epic_category_tree" model="ir.ui.view">
+            <field name="name">project.epic.category.tree</field>
+            <field name="model">project.epic.category</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" default_order="name">
+                    <field name="name"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="project_epic_category_action" model="ir.actions.act_window">
+            <field name="name">Epic categories</field>
+            <field name="res_model">project.epic.category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+        <template t-name="project_implementation.ProjectControlPanel" t-inherit="project.ProjectControlPanel" t-inherit-mode="extension">
+            <xpath expr="//t[@t-call='project.ProjectControlPanelContent']" position="after">
+                <div class="z-index-1" t-on-click="onEpicClick">
+                    <button class="badge border d-flex p-2 ms-2 bg-view fw-bold" data-hotkey="e">
+                        <i class="fa fa-comments fa-fw" role="img" aria-label="Epics" title="Epics" />
+                        <span class="ms-1"><span class="ms-1" t-esc="epicCount"/> Epic<span t-if="epicCount > 1">s</span></span>
+                    </button>
+                </div>
+            </xpath>
+        </template>
+
+</templates>
